@@ -1,0 +1,32 @@
+{
+  "common": {
+    "appName": "KÖFMAN",
+    "loading": "جارٍ التحميل...",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "error": "حدث خطأ ما",
+    "restartRequiredTitle": "إعادة التشغيل مطلوبة",
+    "restartRequiredBody": "يرجى إغلاق التطبيق وإعادة فتحه لتطبيق اتجاه التخطيط."
+  },
+  "auth": {
+    "loginTitle": "تسجيل الدخول",
+    "signupTitle": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "noAccount": "ليس لديك حساب؟",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "signOut": "تسجيل الخروج"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "customers": "العملاء",
+    "offers": "العروض",
+    "invoices": "الفواتير",
+    "settings": "الإعدادات"
+  },
+  "settings": {
+    "language": "اللغة"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "common": {
+    "appName": "KÖFMAN",
+    "loading": "Loading...",
+    "cancel": "Cancel",
+    "save": "Save",
+    "error": "Something went wrong",
+    "restartRequiredTitle": "Restart required",
+    "restartRequiredBody": "Please close and reopen the app for the layout direction to take effect."
+  },
+  "auth": {
+    "loginTitle": "Sign in",
+    "signupTitle": "Create account",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signOut": "Sign out"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "customers": "Customers",
+    "offers": "Offers",
+    "invoices": "Invoices",
+    "settings": "Settings"
+  },
+  "settings": {
+    "language": "Language"
+  }
+}

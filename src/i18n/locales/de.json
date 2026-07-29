@@ -1,0 +1,32 @@
+{
+  "common": {
+    "appName": "KÖFMAN",
+    "loading": "Lädt...",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "error": "Etwas ist schiefgelaufen",
+    "restartRequiredTitle": "Neustart erforderlich",
+    "restartRequiredBody": "Bitte schließe die App und öffne sie erneut, damit die Schriftrichtung angewendet wird."
+  },
+  "auth": {
+    "loginTitle": "Anmelden",
+    "signupTitle": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren",
+    "noAccount": "Noch kein Konto?",
+    "haveAccount": "Bereits ein Konto?",
+    "signOut": "Abmelden"
+  },
+  "nav": {
+    "dashboard": "Übersicht",
+    "customers": "Kunden",
+    "offers": "Angebote",
+    "invoices": "Rechnungen",
+    "settings": "Einstellungen"
+  },
+  "settings": {
+    "language": "Sprache"
+  }
+}

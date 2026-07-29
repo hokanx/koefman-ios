@@ -1,5 +1,6 @@
 /**
- * Hand-written types mirroring /docs/schema.sql.
+ * Hand-written types mirroring /docs/schema.sql exactly (column-for-column,
+ * including nullability).
  *
  * Once the Supabase project is live, prefer regenerating this file with the
  * Supabase CLI (`supabase gen types typescript --project-id <id>`) so it can
@@ -13,7 +14,7 @@ export type InvoiceStatus = 'open' | 'paid' | 'overdue' | 'cancelled';
 
 export interface Profile {
   id: string;
-  email: string;
+  email: string | null;
   display_name: string | null;
   created_at: string;
   updated_at: string;
@@ -22,7 +23,7 @@ export interface Profile {
 export interface BusinessSettings {
   id: string;
   user_id: string;
-  business_name: string;
+  business_name: string | null;
   address: string | null;
   email: string | null;
   phone: string | null;
@@ -68,8 +69,8 @@ export interface Customer {
 export interface Offer {
   id: string;
   user_id: string;
-  offer_number: string;
   customer_id: string;
+  offer_number: string;
   date: string;
   status: OfferStatus;
   notes: string | null;
@@ -82,6 +83,7 @@ export interface Offer {
   updated_at: string;
 }
 
+/** No `updated_at` — line items are replaced wholesale on edit, not patched in place. */
 export interface OfferItem {
   id: string;
   user_id: string;
@@ -89,34 +91,32 @@ export interface OfferItem {
   title: string;
   description: string | null;
   quantity: number;
-  unit: string;
+  unit: string | null;
   unit_price: number;
   tax_rate: number;
   line_total: number;
   sort_order: number;
   created_at: string;
-  updated_at: string;
 }
 
 export interface OfferAcceptance {
   id: string;
   user_id: string;
   offer_id: string;
-  signature_image: string;
+  signature_image: string | null;
   signature_text: string | null;
-  signer_name: string;
+  signer_name: string | null;
   signed_at: string;
-  created_at: string;
 }
 
 export interface Invoice {
   id: string;
   user_id: string;
-  invoice_number: string;
   customer_id: string;
   source_offer_id: string | null;
+  invoice_number: string;
   date: string;
-  due_date: string;
+  due_date: string | null;
   status: InvoiceStatus;
   paid_at: string | null;
   notes: string | null;
@@ -128,6 +128,7 @@ export interface Invoice {
   updated_at: string;
 }
 
+/** No `updated_at` — line items are replaced wholesale on edit, not patched in place. */
 export interface InvoiceItem {
   id: string;
   user_id: string;
@@ -135,20 +136,19 @@ export interface InvoiceItem {
   title: string;
   description: string | null;
   quantity: number;
-  unit: string;
+  unit: string | null;
   unit_price: number;
   tax_rate: number;
   line_total: number;
   sort_order: number;
   created_at: string;
-  updated_at: string;
 }
 
 /** Minimal `Database` shape — just enough for a typed `supabase.from(...)` client. */
 export interface Database {
   public: {
     Tables: {
-      profiles: { Row: Profile; Insert: Partial<Profile> & { id: string; email: string }; Update: Partial<Profile> };
+      profiles: { Row: Profile; Insert: Partial<Profile> & { id: string }; Update: Partial<Profile> };
       business_settings: {
         Row: BusinessSettings;
         Insert: Partial<BusinessSettings> & { user_id: string };
@@ -161,7 +161,7 @@ export interface Database {
       };
       offers: {
         Row: Offer;
-        Insert: Partial<Offer> & { user_id: string; offer_number: string; customer_id: string };
+        Insert: Partial<Offer> & { user_id: string; customer_id: string; offer_number: string };
         Update: Partial<Offer>;
       };
       offer_items: {
@@ -171,17 +171,12 @@ export interface Database {
       };
       offer_acceptances: {
         Row: OfferAcceptance;
-        Insert: Partial<OfferAcceptance> & {
-          user_id: string;
-          offer_id: string;
-          signature_image: string;
-          signer_name: string;
-        };
+        Insert: Partial<OfferAcceptance> & { user_id: string; offer_id: string };
         Update: Partial<OfferAcceptance>;
       };
       invoices: {
         Row: Invoice;
-        Insert: Partial<Invoice> & { user_id: string; invoice_number: string; customer_id: string };
+        Insert: Partial<Invoice> & { user_id: string; customer_id: string; invoice_number: string };
         Update: Partial<Invoice>;
       };
       invoice_items: {

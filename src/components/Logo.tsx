@@ -1,29 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
-import { useTheme } from '../theme/useTheme';
+// Full "KÖFMAN" lockup for login/splash; icon-only mark for small in-app spots.
+// Both are white-on-transparent exports, so they read on the dark theme background.
+const LOCKUP = require('../../assets/brand/lockup_transparent_1200.png');
+const ICON_MARK = require('../../assets/brand/icon_mark_transparent_512.png');
 
-/**
- * Text wordmark fallback — no logo assets were provided yet (see
- * assets/brand/README.md). Swap this out for an <Image> of
- * logo-lockup-1200.png once the real export lands.
- */
 export function Logo({ size = 'large' }: { size?: 'large' | 'small' }) {
-  const theme = useTheme();
-  const fontSize = size === 'large' ? 40 : 20;
+  if (size === 'small') {
+    return <Image source={ICON_MARK} style={styles.small} resizeMode="contain" />;
+  }
 
-  return (
-    <View style={styles.container}>
-      <Text style={[styles.text, { color: theme.colors.text, fontSize }]}>KÖFMAN</Text>
-    </View>
-  );
+  return <Image source={LOCKUP} style={styles.large} resizeMode="contain" />;
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
+  large: {
+    width: 260,
+    height: 170,
+    alignSelf: 'center',
   },
-  text: {
-    fontWeight: '700',
-    letterSpacing: 4,
+  small: {
+    width: 40,
+    height: 40,
   },
 });
